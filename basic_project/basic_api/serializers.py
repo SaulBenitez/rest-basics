@@ -2,7 +2,8 @@ from django.db.models import fields
 from rest_framework import serializers
 from basic_api.models import Article
 
-'''
+"""
+# First version
 class ArticleSerializer(serializers.Serializer):
     ''' Serializer for article model '''
     
@@ -12,7 +13,7 @@ class ArticleSerializer(serializers.Serializer):
     date = serializers.DateTimeField()
 
     def create(self, validated_data):
-        '''' For creating new article ''''
+        ''' For creating new article '''
         return Article.objects.create(validated_data)
 
     def update(self, instance, validated_data):
@@ -22,7 +23,7 @@ class ArticleSerializer(serializers.Serializer):
         instance.date = validated_data.get('date', instance.date)
         instance.save()
         return instance
-'''
+"""
 
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
