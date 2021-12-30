@@ -8,6 +8,7 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register('articles', views.ArticleViewSet, basename='articles')
 router.register('genarticles', views.ArticleGenericViewSet, basename='genarticles')
+router.register('modarticles', views.ArticleModelViewSet, basename='modarticles')
 
 urlpatterns = [
     path('viewset/', include(router.urls)),

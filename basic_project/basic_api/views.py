@@ -17,15 +17,22 @@ from rest_framework import viewsets
 from basic_api.models import Article
 from basic_api.serializers import ArticleSerializer
 
+class ArticleModelViewSet(viewsets.ModelViewSet):
+
+    serializer_class = ArticleSerializer
+    queryset = Article.objects.all()
+
+
 class ArticleGenericViewSet(viewsets.GenericViewSet, 
                             mixins.ListModelMixin,
                             mixins.CreateModelMixin,
                             mixins.RetrieveModelMixin,
                             mixins.UpdateModelMixin,
                             mixins.DestroyModelMixin):
-                            
+
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()
+
 
 class ArticleViewSet(viewsets.ViewSet):
 
