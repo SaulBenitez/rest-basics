@@ -4,7 +4,7 @@
 
 Make the following steps:
 
-* Once the repository is cloned, create and activate the virtual environment
+* Create and activate the virtual environment
     ```
     virtualenv env
     env\Scripts\activate
