@@ -2,8 +2,6 @@
 
 ## Instructions
 
-Make the following steps:
-
 * Create and activate the virtual environment
     ```
     virtualenv env
@@ -14,5 +12,12 @@ Make the following steps:
     ```
     python install -r requirements.txt
     ```
-* Change to the project folder and open the project in an IDE
-  * 
+* Change to the project folder basic_project
+    ```
+    cd basic_project
+    ```
+* Run django project
+    ```
+    python manage.py migrate
+    python manage.py runserver
+    ```
