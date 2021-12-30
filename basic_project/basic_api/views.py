@@ -1,15 +1,23 @@
 from django.http import Http404
 from django.views import generic
 
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from rest_framework.views import APIView
 from rest_framework import generics
 from rest_framework import mixins
+from rest_framework.authentication import SessionAuthentication
+from rest_framework.authentication import BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
 
 from basic_api.models import Article
 from basic_api.serializers import ArticleSerializer
+
+
+
+
 
 class GenericAPIView(generics.GenericAPIView, 
                     mixins.ListModelMixin, 
@@ -22,6 +30,10 @@ class GenericAPIView(generics.GenericAPIView,
     queryset = Article.objects.all()
 
     lookup_field = 'id'
+
+    # authentication_classes = [SessionAuthentication, BasicAuthentication]
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, id=None):
         ''' Returns a list of APIView features '''
