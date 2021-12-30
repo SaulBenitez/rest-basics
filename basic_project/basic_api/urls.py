@@ -2,10 +2,12 @@ from django.urls import path, include
 from basic_api import views
 from rest_framework.routers import DefaultRouter
 
-from basic_api.views import ArticleViewSet
+#from basic_api.views import ArticleViewSet
+#from basic_api.views import ArticleGenericViewSet
 
 router = DefaultRouter()
-router.register('articles', ArticleViewSet, basename='articles')
+router.register('articles', views.ArticleViewSet, basename='articles')
+router.register('genarticles', views.ArticleGenericViewSet, basename='genarticles')
 
 urlpatterns = [
     path('viewset/', include(router.urls)),

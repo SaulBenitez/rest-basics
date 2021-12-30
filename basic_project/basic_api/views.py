@@ -17,6 +17,15 @@ from rest_framework import viewsets
 from basic_api.models import Article
 from basic_api.serializers import ArticleSerializer
 
+class ArticleGenericViewSet(viewsets.GenericViewSet, 
+                            mixins.ListModelMixin,
+                            mixins.CreateModelMixin,
+                            mixins.RetrieveModelMixin,
+                            mixins.UpdateModelMixin,
+                            mixins.DestroyModelMixin):
+                            
+    serializer_class = ArticleSerializer
+    queryset = Article.objects.all()
 
 class ArticleViewSet(viewsets.ViewSet):
 
@@ -53,7 +62,7 @@ class ArticleViewSet(viewsets.ViewSet):
         article = get_object_or_404(queryset, pk=pk)
         article.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-        
+
 
 class GenericAPIView(generics.GenericAPIView, 
                     mixins.ListModelMixin, 
